@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --ink: #17202a;
+            --muted: #667085;
+            --line: #d9dee7;
+            --accent: #1769aa;
+            --accent-dark: #0f4f82;
+            --surface: #ffffff;
+            --background: #eef4f8;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            font-family: Georgia, 'Times New Roman', serif;
+            color: var(--ink);
+            background: linear-gradient(135deg, #eef4f8, #dbe8ef);
+        }
+
+        .form-card {
+            width: min(100%, 680px);
+            padding: clamp(24px, 5vw, 48px);
+            background: var(--surface);
+            border: 1px solid rgba(23, 32, 42, 0.08);
+            border-radius: 12px;
+            box-shadow: 0 18px 45px rgba(27, 52, 71, 0.14);
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: clamp(2rem, 5vw, 3rem);
+            line-height: 1.1;
+        }
+
+        .intro {
+            margin: 0 0 28px;
+            color: var(--muted);
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .field {
+            display: grid;
+            gap: 8px;
+        }
+
+        .field-full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-family: Arial, sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            padding: 13px 14px;
+            color: var(--ink);
+            background: #fbfcfd;
+            font: 1rem/1.4 Arial, sans-serif;
+            transition: border-color 160ms ease, box-shadow 160ms ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(23, 105, 170, 0.16);
+        }
+
+        textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        button {
+            margin-top: 24px;
+            border: 0;
+            border-radius: 6px;
+            padding: 14px 24px;
+            color: #fff;
+            background: var(--accent);
+            cursor: pointer;
+            font: 700 0.95rem Arial, sans-serif;
+            transition: background 160ms ease, transform 160ms ease;
+        }
+
+        button:hover {
+            background: var(--accent-dark);
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 560px) {
+            body {
+                padding: 14px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .field-full {
+                grid-column: auto;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="form-card">
+        <h1>Get in touch</h1>
+        <p class="intro">Have a question or an idea? Send a message and we will get back to you.</p>
+
+        <form id="contact-form" name="contact-form">
+            <div class="form-grid">
+                <div class="field">
+                    <label for="name">Name</label>
+                    <input id="name" name="name" type="text" autocomplete="name" placeholder="Your full name" />
+                    <p id="error-name" style="color:red"></p>
+                </div>
+
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" />
+                    <p id="error-email" style="color:red"></p>
+                </div>
+
+                <div class="field field-full">
+                    <label for="phone-number">Phone number</label>
+                    <input id="phonenumber" name="phoneNumber" maxlength="10" type="tel" autocomplete="tel" placeholder="+1 234 567 8900">
+                    <p id="error-phonenumer" style="color:red"></p>
+                </div>
+
+                <div class="field field-full">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="How can we help?" /></textarea>
+                    <p id="error-message" style="color:red"></p>
+                </div>
+            </div>
+
+            <button id="submit-button" name="submit" type="submit">Send message</button>
+
+            
+        </form>
+    </main>
+</body>
+<script src="main.js"></script>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Picker</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            list-style: none;
+        }
+        .container{
+            width: 250px;
+            margin: 50px auto;
+            text-align: center;
+            line-height: 50px;
+            background: white;
+            box-shadow: 0px 0px 10px #ccc;
+            padding: 20px;
+        }
+
+        .circle{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 1px solid red;
+            margin: auto;
+        }
+
+        button{
+            padding: 10px 30px;
+            border-radius: 20px;
+            background: none;
+            border: 0.5px solid black;
+            cursor: pointer;
+        }
+
+        #message{
+            color: green;
+        }
+    </style>
+</head>
+
+<body id="body">
+
+    <div class="container">
+
+        <div class="circle" id="circle"></div>
+
+        <input type="color" id="colorPicker" value="#DC143C" />
+
+        <p id="colorCode">#DC143C</p>
+
+        <button onclick="ColorCopy()">Copy Color</button>
+
+        <p id="message"></p>
+    </div>
+
+</body>
+
+<script>
+
+    let ColorPicker = document.getElementById('colorPicker');
+    let ColorCircel = document.getElementById('circle');
+    let ColorCode = document.getElementById('colorCode');
+    let body = document.getElementById("body");
+
+    let message = document.getElementById("message");
+
+    ColorPicker.addEventListener("input", function(){
+        let color = this.value;
+
+        ColorCircel.style.background = color;
+        body.style.background = color;
+        ColorCode.innerHTML = color.toUpperCase() || "#DC143C";
+
+        console.log(color)
+    })
+
+    function ColorCopy(){
+        navigator.clipboard.writeText(ColorCode.innerHTML);
+        message.innerHTML = `Copy Color ${ColorCode.innerHTML}`
+    }
+
+</script>
+
+</html>
